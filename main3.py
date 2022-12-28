@@ -1,28 +1,75 @@
-def guessinggame():
-    print("Let's play a guessing game!")
-    import random
-    randomNumber = random.randint(1,100)
-    number_guess = int(input("Enter your guess!"))
-    while number_guess != randomNumber:
-
-        if number_guess > randomNumber:
-            print("The number is smaller than your guess.")
-            number_guess = int(input("Enter your guess!"))
-
-        elif number_guess < randomNumber:
-            print("The number is larger than your guess.")
-            number_guess = int(input("Enter your guess!"))
+#HOMEWORK
+import string
 
 
-    if number_guess == randomNumber:
-        print("Bravo, you've guessed it!")
+def vol(rad):
+    result = rad ** 3 * 3.14
+    result2 = 4/3 * result
+    print(result2)
+vol(2)
 
-        guessinggame()
+def ran_check(num,low,high):
+    if num > low and num < high:
+        print(num, "is in the range between", low, "and", high)
+    else:
+        print(num, "is in not the range between", low, "and", high)
 
-guessinggame()
+ran_check(9,2,7)
 
-#še naloga FizzBuzz 1-100
-#vsaka številka ki je deljiva z 3 je Fizz, vsaka ki z 5 je buzz, vsaka ki je oboje FizzBuzz
-#združi vse naloge v main2
-#switch case poglej (match)
+s = "Hello Mr. Rogers, how are you this fine Tuesday?"
+def up_low(s):
+    spl = s.split()
+    uppercase = []
+    lowercase = []
+    for letter in spl:
+        if letter[0].isupper():
+            uppercase.append(letter)
+        elif letter[0].islower():
+            lowercase.append(letter)
+    print("The number of uppercase words is", len(uppercase))
+    print("The number of lowercase words is", len(lowercase))
 
+up_low(s)
+
+def unique_list(lst):
+    lst2 = []
+    for num in lst:
+        if num not in lst2:
+            lst2.append(num)
+    print(lst2)
+
+unique_list([1,1,1,1,2,2,2,2,3,3,3,4,4,4,4,4,4,5,5,5,6,6,6,6,6,6,6,7,7,8,8,8,8,8,8,8,8,8,8,9])
+
+def multiply(numbers):
+    result = 1
+    for num in numbers:
+        result = result * num
+    print(result)
+
+multiply([1,2,3,-4])
+
+def palindrome(s):
+    s = s.replace(" ","").lower()
+    revs ="".join(reversed(s))
+    if s == revs:
+        print(True)
+    else:
+        print(False)
+
+palindrome("helleh")
+
+def pangram(str1, aplhabet=string.ascii_lowercase):
+    str1 = str1.replace(" ","").lower()
+    str2 = []
+    for let in str1:
+        if let not in str2:
+            str2.append(let)
+    str2 = ("".join(sorted(str2)))
+
+
+    if str2 == aplhabet:
+        print(True)
+    else:
+        print(False)
+
+pangram("The quick brown fox jumps over the lazy dog")

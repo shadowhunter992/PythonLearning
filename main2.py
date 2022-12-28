@@ -1,15 +1,15 @@
 def naloga():
     operation = input('''
             Please type the option you would like to explore.
-            Calc for calculator
-            Guess for guessing game
-            Fizz for FizzBuzz
-            MinMax for getting minimum and maximum numbers of a set
-            Triangle for triangle generation
-            ARLTP for All roads lead to philosophy game    
+            1 for calculator
+            2 for guessing game
+            3 for FizzBuzz
+            4 for getting minimum and maximum numbers of a set
+            5 for triangle generation
+            6 for All roads lead to philosophy game    
                 ''')
 
-    def newfunc():
+    def calculator():
         operation = input('''
     Please type the math operation you would like to perform
     + for adition
@@ -39,23 +39,9 @@ def naloga():
 
         else:
             print('You have not selected a valid operator, please run the program again')
-        again()
 
-
-    def again():
-        calc_again = input('''
-        Do you want to perform another calculation?
-        Type Y for YES or N for NO
-        ''')
-
-        if calc_again.upper() == 'Y':
-            newfunc()
-
-        elif calc_again.upper() == 'N':
-            print('See you')
-
-        else:
             again()
+
 
     def guessinggame():
         print("Let's play a guessing game!")
@@ -75,14 +61,13 @@ def naloga():
         if number_guess == randomNumber:
             print("Bravo, you've guessed it!")
 
-            guessinggame()
+            again()
 
     def fizzbuzz():
         print("Please select the maximum number for list range")
         selectnumber = int(input())
         range_1 = range(1, selectnumber + 1)
         thelist = list(range_1)
-
 
         for i in range_1:
             if thelist[i-1] % 3 == 0 and thelist[i-1] % 5 == 0:
@@ -91,38 +76,68 @@ def naloga():
                 thelist[i-1] = "Fizz"
             elif thelist[i-1] % 5 == 0:
                 thelist[i-1] = "Buzz"
-        print(thelist)
+        [print(x) for x in thelist]
+
+        again()
 
     def minmax():
         print("Please input a set of numbers.")
         userinput = input("Enter space seperated integers: ")
-        userset = set(int(item) for item in userinput.split())
-        print(min(userset))
-        print(max(userset))
+        userset = list(int(item) for item in userinput.split())
+        def minimum1(userset):
+            current_min = userset[0]    #1
+            for num in userset:
+                if num < current_min:
+                    current_min = num
+            return current_min
+        def maximum1(userset):
+            current_max = userset[0]
+            for num in userset:
+                if num > current_max:
+                    current_max = num
+            return current_max
+
+        print(minimum1(userset))
+        print(maximum1(userset))
+
+        again()
 
     def triangle():
-        rows = int(input("Enter number of rows: "))
+        triangle_height = int(input('Enter triangle height:\n'))
+        print('')
+        for x in range(1, triangle_height + 1):
+            print(x * "*")
+        again()
 
-        for i in range(rows):
-            for j in range(i + 1):
-                print("* ", end="")
-            print("\n")
+    def again():
+        nal_again = input('''
+            Do you wish to select another option from the menu?
+            Type Y for YES or N for NO
+            ''')
+
+        if nal_again.upper() == 'Y':
+            naloga()
+
+        elif nal_again.upper() == 'N':
+            print('See you')
+
+        else:
+            again()
 
 
+    if operation == "1":
+        calculator()
 
-    if operation == "Calc":
-        newfunc()
-
-    elif operation == "Guess":
+    elif operation == "2":
         guessinggame()
 
-    elif operation == "Fizz":
+    elif operation == "3":
         fizzbuzz()
 
-    elif operation == "MinMax":
+    elif operation == "4":
         minmax()
 
-    elif operation == "Triangle":
+    elif operation == "5":
         triangle()
 
 
